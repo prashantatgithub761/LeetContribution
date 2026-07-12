@@ -1,24 +1,14 @@
 class Solution {
     public void moveZeroes(int[] nums) {
-        int n = nums.length;
-        int zeroes = 0;
-        int a = 0;
-        for(int i = 0;i<n;i++){
-            // count zeros
-            if(nums[i]==0){
-                zeroes++;
-
+        int pt1 = 0;
+        for(int pt2 = 0;pt2<nums.length;pt2++){
+            if(nums[pt2] != 0){
+                // swap 
+                int temp = nums[pt1];
+                nums[pt1]=nums[pt2];
+                nums[pt2]=temp;// Or 0
+                pt1++;
             }
-            else{
-                nums[a++]=nums[i];
-
-            }
-
-            
-        }
-        // add the rest of elements as zero in last
-        for(int i = n-1;i>=n-zeroes;i--){
-            nums[i]=0;
         }
         
     }
