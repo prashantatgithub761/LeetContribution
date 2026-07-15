@@ -1,36 +1,35 @@
 class Solution {
     public boolean isPalindrome(String s) {
+        // first add all the characters in a single string
+        StringBuilder string = new StringBuilder();
 
-        StringBuilder clean = new StringBuilder();
+        // it will give us a string with no spaces
 
-        for (char ch : s.toCharArray()) {
-            if (Character.isLetterOrDigit(ch)) {
-                clean.append(Character.toLowerCase(ch));
+        for(char c: s.toCharArray()){
+            if(Character.isLetterOrDigit(c)){
+                string.append(Character.toLowerCase(c));
+            }
+            else{
+                continue;
+            }
+
+
+        }
+        
+        // now use two pointers from both ends
+        int left = 0;
+        int right = string.length()-1;
+        while(left<=right){
+            if(string.charAt(left)!=string.charAt(right)){
+                return false;
+
+            }
+            else{
+                left++;
+                right--;
             }
         }
+        return true;
 
-        String str = clean.toString();
-
-        String s1 = revString(str);
-        return str.equals(s1);
-    }
-
-    // function to return reverse of a string
-    public String revString(String s) {
-        char[] arr = s.toCharArray();
-
-        int left = 0;
-        int right = arr.length - 1;
-
-        while (left < right) {
-            char temp = arr[left];
-            arr[left] = arr[right];
-            arr[right] = temp;
-
-            left++;
-            right--;
-        }
-
-        return String.valueOf(arr);
     }
 }
