@@ -1,30 +1,30 @@
 class Solution {
     public int maxFrequencyElements(int[] nums) {
-        HashMap<Integer,Integer> a = new HashMap<>();
-        for(int x:nums){
-            if(a.containsKey(x)){
-                a.put(x,a.get(x)+1);
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int x : nums){
+            if(map.containsKey(x)){
+                map.put(x,map.get(x)+1);
             }
             else{
-                a.put(x,1);
-
+                map.put(x,1);
             }
         }
-        // find largest freq
-        
-        int max = 0;
-        for(int freq:a.values()){
-            max = Math.max(max,freq);
-
+        // now we have map of values with their freq
+        int max = -1;
+        for(int s: map.values()){
+            if(s>max){
+                max = Math.max(max,s);
+            }
         }
         int sum = 0;
-        for(int i : a.values()){
-            if(i==max){
-                // add to end sum
-                sum+=i;
+        for(int t : map.values()){
+            if(t==max){
+                sum+=t;
             }
         }
         return sum;
+
+
 
     }
 }
