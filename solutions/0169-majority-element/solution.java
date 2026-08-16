@@ -1,33 +1,23 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        int n = nums.length;
-        // create a hashmap to store count of every element 
+        // we use HashMap to store count
         HashMap<Integer,Integer> map = new HashMap<>();
-        for(int num : nums){
-            
-            if(map.containsKey(num)){
-                // increate the rank 
-                map.put(num,map.get(num)+1);
+        int n = nums.length;
 
+        for(int i : nums){
+            if(map.containsKey(i)){
+                map.put(i,map.get(i)+1);
             }
-            else {
-                // count of i is 1
-                map.put(num,1);
-            }
-        }
-        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-           if (entry.getValue() > n / 2) {
-              return entry.getKey();
+            else{
+                map.put(i,1);
             }
         }
-       
-        // and then traverse through the hashmap if any element have count>mid/2
-        // return that element
+        for(Map.Entry<Integer,Integer> entry: map.entrySet()){
+            if(entry.getValue()>n/2){
+                return entry.getKey();
+            }
+        }
         return -1;
-
-
-
-
-        
     }
+
 }
