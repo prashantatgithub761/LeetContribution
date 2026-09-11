@@ -1,23 +1,33 @@
 class Solution {
     public int majorityElement(int[] nums) {
-        // we use HashMap to store count
-        HashMap<Integer,Integer> map = new HashMap<>();
+
         int n = nums.length;
 
-        for(int i : nums){
-            if(map.containsKey(i)){
-                map.put(i,map.get(i)+1);
-            }
-            else{
-                map.put(i,1);
-            }
+        HashMap<Integer,Integer> map = new HashMap<>();
+
+        for(int i :nums){
+            map.put(i,map.getOrDefault(i,0)+1);
         }
-        for(Map.Entry<Integer,Integer> entry: map.entrySet()){
-            if(entry.getValue()>n/2){
-                return entry.getKey();
+        // traverse in the key of map 
+        // for(Map.Entry<Integer, Integer> entry : map.entrySet()){
+        //     if(entry.getValue()>n/2){
+        //         return entry.getKey();
+        //     }
+
+
+
+        // }
+
+        for(int a:map.keySet()){
+            if(map.get(a)>n/2){
+                return a;
             }
         }
         return -1;
+        // and if key's value>n/2
+        // return the key
+        
+        
     }
 
 }
