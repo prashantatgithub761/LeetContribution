@@ -1,21 +1,51 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-        if (nums.length == 0) return 0;
+        // // if (nums.length == 0) return 0;
 
-        int left = 0;
+        // // int j = 1;  // pointer for unique elements
+        // // for (int i = 1; i < nums.length; i++) {
+        // //     if (nums[i] != nums[i - 1]) {
+        // //         nums[j] = nums[i];  // place unique element
+        // //         j++;
+        // //     }
+        // // }
+        // // return j;  // length of unique elements
+        // if(nums.length==0) return 0;
+
+         
+        // int unique = 1;
+        // for(int i = 1;i<nums.length;i++){
+        //     if(nums[i]!=nums[i-1]){
+        //         // add into arr and inc unique
+        //         nums[unique] = nums[i];
+        //         unique++;
+        //     }
+
+        // }
+        // return unique;
+
+        if(nums.length<0){
+            return -1;
+        }
+
+        int v = 1;
         
-
-        for(int right = 1;right<nums.length;right++){
-            // loop to get the uniques element
-
-            // agr right element unique hai toh left ko right banaa doo taaki right aage badhh paaye..
-            if(nums[right]!=nums[left]){
-                left++;
-                nums[left]=nums[right];
-                
+        for(int i = 1;i<nums.length;i++){
+            if(nums[i]!=nums[i-1]){
+                nums[v] = nums[i];
+                v++;
 
             }
+            
+
         }
-        return left+1;
+        return v;
+
+
+
+
+
+
+
     }
 }
