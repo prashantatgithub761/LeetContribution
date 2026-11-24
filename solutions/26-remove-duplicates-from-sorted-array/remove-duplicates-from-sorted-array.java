@@ -18,5 +18,6 @@ class Solution {
 
         }
         return a+1;
+        // as a start from 0 and we have to return count;
     }
 }
